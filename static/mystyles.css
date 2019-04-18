@@ -1,0 +1,36 @@
+/* main body styling */
+.jumbotron {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background-color: lightgrey;
+}
+.row {
+    padding-inline-start: 0.5rem;
+    padding-inline-end: 0.5rem;
+}
+.body-background {
+    background: url(astrology-astronomy-background.jpg);
+    background-size:     cover;
+/*     background-repeat:   no-repeat; */
+    background-position: center center; 
+}
+/* navbar styling */
+.navbar {
+    border-bottom: solid rgba(0, 0, 0, 0.199);
+    margin-bottom: 1rem;
+    padding: 0rem;
+}
+.navbar-brand {
+    background-color: grey;
+    margin-left: 1rem;
+    padding: 0.5rem;
+}
+
+.navbar-brand:hover, .btn-secondary:hover {
+background-color: black;
+color: white;
+}
+.btn-secondary {
+    background-color: grey;
+}
+

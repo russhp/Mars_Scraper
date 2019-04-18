@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width = device-width, initial-scale=1">
+    <title>To Mars!</title>
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css" integrity="sha384-PDle/QlgIONtM1aqA2Qemk5gPOE7wFq8+Em+G/hmo5Iq0CCmYZLv3fVRDJ4MMwEA" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='mystyles.css') }}">
+    <link rel="shortcut icon" href="https://astrogeology.usgs.gov/cache/images/dfaf3849e74bf973b59eb50dab52b583_cerberus_enhanced.tif_thumb.png">
+</head>
+<body class="body-background">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">Mars Scraper</a>
+        <ul class="navbar-nav mr-auto">
+            <li>
+                <a role="button" class="btn btn-secondary" href="/scrape">Scrape</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container-fluid">
+        
+        
+    <!--     do if scraper has been run    -->
+        {% if news_title %}
+        <!--     outer top row     -->
+        <div class="row">
+            
+            <!--     left column     -->
+            <div class="col-md-7 col-xs-12">
+                
+                <!--     top left row     -->
+                <div class="row">
+                    <div class="jumbotron border border-none">
+                        <h5>NASA Mars News Posted, {{date}}</h5>
+                        <h2>{{news_title}}</h2>
+                        <p>{{news_p}}</p>
+                    
+                        <h2>The Curiosity Weather Report (Usually...)</h2>
+                        <p>{{mars_weather}}</p>
+                        
+                    </div>
+                </div>
+                
+                <!--     bottom left row     -->
+                <div class="row">
+                    <div class="jumbotron border border-none">
+                        <h3>JPL's Featured Image</h3>
+                        <img class="img-fluid rounded" src="{{featured_image}}" alt="JPL's featured image">
+                    </div>
+                </div>
+            </div>
+            
+            <!--       right column       -->
+            <div class="col-md-5 col-xs-12">
+                <div class="table-responsive">
+                    {{table|safe}}
+                </div>
+            </div>
+            
+            <div class="col-12">
+                <div class="row pb-2">
+                    <div class="col-md-6 col-xs-12 px-1 pb-2">
+                        <div class="container">
+                            <h5 class="text-center text-white">{{hemis_list[0].title}}</h5>
+                            <img class="img-fluid rounded-circle border border-dark" src="{{hemis_list[0].img_url}}" alt="{{hemis_list[0].title}} image">
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xs-12 px-1">
+                        <div class="container">
+                            <h5 class="text-center text-white">{{hemis_list[1].title}}</h5>
+                            <img class="img-fluid rounded-circle border border-dark" src="{{hemis_list[1].img_url}}" alt="{{hemis_list[1].title}} image">
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xs-12 px-1 pb-2">
+                        <div class="container">
+                            <h5 class="text-center text-white">{{hemis_list[2].title}}</h5>
+                            <img class="img-fluid rounded-circle border border-dark" src="{{hemis_list[2].img_url}}" alt="{{hemis_list[2].title}} image">
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xs-12 px-1">
+                        <div class="container">
+                            <h5 class="text-center text-white">{{hemis_list[3].title}}</h5>
+                            <img class="img-fluid rounded-circle border border-dark" src="{{hemis_list[3].img_url}}" alt="{{hemis_list[3].title}} image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    <!--     do if scraper hasn't been run before     -->
+        {% else %}
+        <div class="col-md-7 col-xs-12">
+            <div class="jumbotron border border-none">
+                <h4>Click Scrape to get started! It can take as long as 5 minutes, depending on internet connection.</h4>
+                <a role="button" class="col align-self-center btn btn-secondary" href="/scrape">Scrape</a>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/js/bootstrap.min.js" integrity="sha384-7aThvCh9TypR7fIc2HV4O/nFMVCBwyIUKL8XCtKE+8xgCgl/PQGuFsvShjr74PBp" crossorigin="anonymous"></script>
+</body>
+</html>
